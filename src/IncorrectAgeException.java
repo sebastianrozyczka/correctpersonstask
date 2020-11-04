@@ -1,5 +1,5 @@
-public class IncorrectAgeException extends RuntimeException {
-    public IncorrectAgeException() {
-        super("Niepoprawna wartość pola wiek ! Wartość powinna być dodatnia");
+public class IncorrectAgeException extends Exception {
+    public IncorrectAgeException(double age) {
+        super("Niepoprawna wartość pola wiek: " + age);
     }
 }

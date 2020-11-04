@@ -4,7 +4,7 @@ public class Person {
     private double age;
     private String pesel;
 
-    public Person(String firstName, String lastName, double age, String pesel) {
+    public Person(String firstName, String lastName, double age, String pesel) throws NameUndefinedException, IncorrectAgeException {
         checkName(firstName, lastName);
         checkAge(age);
         this.firstName = firstName;
@@ -17,7 +17,7 @@ public class Person {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(String firstName) throws NameUndefinedException {
         checkName(firstName, lastName);
         this.firstName = firstName;
     }
@@ -26,7 +26,7 @@ public class Person {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(String lastName) throws NameUndefinedException {
         checkName(firstName, lastName);
         this.lastName = lastName;
     }
@@ -35,7 +35,7 @@ public class Person {
         return age;
     }
 
-    public void setAge(double age) {
+    public void setAge(double age) throws IncorrectAgeException {
         checkAge(age);
         this.age = age;
     }
@@ -48,15 +48,15 @@ public class Person {
         this.pesel = pesel;
     }
 
-    private void checkName(String firstName, String lastName) {
+    private void checkName(String firstName, String lastName) throws NameUndefinedException {
         if(lastName == null || firstName == null || lastName.length() < 2 || firstName.length() < 2 ) {
-            throw new NameUndefinedException();
+            throw new NameUndefinedException(firstName, lastName);
         }
     }
 
-    private void checkAge(double age) {
+    private void checkAge(double age) throws IncorrectAgeException {
         if(age < 1) {
-            throw new IncorrectAgeException();
+            throw new IncorrectAgeException(age);
         }
     }
 }

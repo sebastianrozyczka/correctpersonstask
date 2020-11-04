@@ -1,5 +1,5 @@
-public class NameUndefinedException extends RuntimeException{
-    public NameUndefinedException() {
-        super("Nieprawidłowa wartość pola nazwisko! ");
+public class NameUndefinedException extends Exception{
+    public NameUndefinedException(String firstName, String lastName) {
+        super("Nieprawidłowa wartość pola nazwisko: " + firstName + " " + lastName);
     }
 }
