@@ -49,7 +49,7 @@ public class Person {
     }
 
     private void checkName(String firstName, String lastName) {
-        if(lastName == null || firstName == null) {
+        if(lastName == null || firstName == null || lastName.length() < 2 || firstName.length() < 2 ) {
             throw new NameUndefinedException();
         }
     }
